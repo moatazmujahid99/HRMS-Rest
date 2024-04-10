@@ -42,7 +42,7 @@ public class EmployeeService {
             
             EmployeeDao employeeDao = new EmployeeDao(em);
             List<Employee> employees = employeeDao.getAllEmployees(page, limit);
-            return employeeDTOsfrom(employees);
+            return EmployeeMapper.EmployeesToEmployeeDTOs(employees);
         });
 
     }
@@ -90,7 +90,7 @@ public class EmployeeService {
 
             Employee employee = getEmployeeOrThrow(employeeId, em);
             List<Absence> absences = new EmployeeDao(em).getEmployeeAbsences(employee.getEmployeeId(), page, limit);
-            return absenceDTOsfrom(absences);
+            return AbsenceMapper.AbsencesToAbsenceDTOs(absences);
         });
     }
 
@@ -99,7 +99,7 @@ public class EmployeeService {
 
             Employee employee = getEmployeeOrThrow(employeeId, em);
             List<Attendance> attendances = new EmployeeDao(em).getEmployeeAttendances(employee.getEmployeeId(), page, limit);
-            return attendanceDTOsfrom(attendances);
+            return AttendanceMapper.AttendancesToAttendanceDTOs(attendances);
         });
 
     }
@@ -126,7 +126,6 @@ public class EmployeeService {
             new EmployeeDao(em).delete(employee);
         });
     }
-    
 
     private static void assignEmployeeToDepartment(Employee employee, Department department) {
         employee.setWorkedDepartment(department);
@@ -181,35 +180,6 @@ public class EmployeeService {
                 .build();
         return uri.toString();
     }
-
-    private static List<EmployeeDTO> employeeDTOsfrom(List<Employee> employees) {
-        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
-        for (Employee employee : employees) {
-            EmployeeDTO employeeDTO = EmployeeMapper.EmployeeToEmployeeDTO(employee);
-            employeeDTOs.add(employeeDTO);
-        }
-        return employeeDTOs;
-    }
-
-
-    private static List<AbsenceDTO> absenceDTOsfrom(List<Absence> absences) {
-        List<AbsenceDTO> absenceDTOs = new ArrayList<>();
-        for (Absence absence : absences) {
-            AbsenceDTO absenceDTO = AbsenceMapper.AbsenceToAbsenceDTO(absence);
-            absenceDTOs.add(absenceDTO);
-        }
-        return absenceDTOs;
-    }
-
-    private static List<AttendanceDTO> attendanceDTOsfrom(List<Attendance> attendances) {
-        List<AttendanceDTO> attendanceDTOs = new ArrayList<>();
-        for (Attendance attendance : attendances) {
-            AttendanceDTO attendanceDTO = AttendanceMapper.AttendanceToAttendanceDTO(attendance);
-            attendanceDTOs.add(attendanceDTO);
-        }
-        return attendanceDTOs;
-    }
-
 
 
 }

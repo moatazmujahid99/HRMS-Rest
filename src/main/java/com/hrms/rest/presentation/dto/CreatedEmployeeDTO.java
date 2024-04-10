@@ -16,8 +16,8 @@ import lombok.Setter;
 public class CreatedEmployeeDTO{
     private int employeeId;
     @Size(min = 3,max = 50,message = "Your first name must be between 3 and 50")
-
     private String firstName;
+    
     @Size(min = 3,max = 50,message = "Your last name must be between 3 and 50")
     private String lastName;
 

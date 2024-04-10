@@ -1,5 +1,8 @@
 package com.hrms.rest.Service.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hrms.rest.persistence.entity.Absence;
 import com.hrms.rest.presentation.dto.AbsenceDTO;
 import com.hrms.rest.presentation.enums.LeaveStatus;
@@ -16,5 +19,14 @@ public class AbsenceMapper {
                 .leaveStatus(LeaveStatus.valueOf(absence.getLeaveStatus()))
                 .build();
     }
-    
+
+    public static List<AbsenceDTO> AbsencesToAbsenceDTOs(List<Absence> absences) {
+        List<AbsenceDTO> absenceDTOs = new ArrayList<>();
+        for (Absence absence : absences) {
+            AbsenceDTO absenceDTO = AbsenceToAbsenceDTO(absence);
+            absenceDTOs.add(absenceDTO);
+        }
+        return absenceDTOs;
+    }
+
 }

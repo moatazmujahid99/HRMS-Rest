@@ -1,5 +1,8 @@
 package com.hrms.rest.Service.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hrms.rest.persistence.entity.Employee;
 import com.hrms.rest.presentation.dto.CreatedEmployeeDTO;
 import com.hrms.rest.presentation.dto.DetailedEmployeeDTO;
@@ -18,7 +21,7 @@ public class EmployeeMapper {
 
         if (employee.getWorkedDepartment() != null) {
             employeeDTO.setDepartment(employee.getWorkedDepartment().getDepartmentName());
-        }else{
+        } else {
             employeeDTO.setDepartment("No department");
         }
 
@@ -37,7 +40,7 @@ public class EmployeeMapper {
 
         if (employee.getWorkedDepartment() != null) {
             detailedEmployeeDTO.setDepartment(employee.getWorkedDepartment().getDepartmentName());
-        }else{
+        } else {
             detailedEmployeeDTO.setDepartment("No department");
         }
 
@@ -53,5 +56,14 @@ public class EmployeeMapper {
         employee.setJobTitle(createdEmployeeDTO.getJobTitle());
         employee.setHireDate(createdEmployeeDTO.getHireDate());
         return employee;
+    }
+
+    public static List<EmployeeDTO> EmployeesToEmployeeDTOs(List<Employee> employees) {
+        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
+        for (Employee employee : employees) {
+            EmployeeDTO employeeDTO = EmployeeToEmployeeDTO(employee);
+            employeeDTOs.add(employeeDTO);
+        }
+        return employeeDTOs;
     }
 }
