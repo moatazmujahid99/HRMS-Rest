@@ -1,6 +1,5 @@
 package com.hrms.rest;
 
-import com.hrms.rest.persistence.dept;
 import com.hrms.rest.persistence.entity.Employee;
 
 import jakarta.persistence.EntityManager;
@@ -28,15 +27,9 @@ public class MyResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getIt() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hrms");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Employee emp = entityManager.find(Employee.class, 1);
-        dept d=new dept();
-        d.id=emp.getManagedDepartment().getDepartmentId();
-        d.name=emp.getManagedDepartment().getDepartmentName();
-        System.out.println(emp.getManagedDepartment());
+     
     
-        return Response.ok(d).build();
+        return Response.ok("ok ok").build();
     }
     
 }
