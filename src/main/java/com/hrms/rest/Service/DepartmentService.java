@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import com.hrms.rest.Service.mapper.DepartmentMapper;
 import com.hrms.rest.persistence.Database;
 import com.hrms.rest.persistence.dao.DepartmentDao;
@@ -15,7 +14,6 @@ import com.hrms.rest.presentation.dto.CreatedDepartmentDTO;
 import com.hrms.rest.presentation.dto.DepartmentDTO;
 import com.hrms.rest.presentation.dto.InvalidFieldMessageDTO;
 import com.hrms.rest.presentation.exception.DataNotFoundException;
-
 import jakarta.persistence.EntityManager;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;

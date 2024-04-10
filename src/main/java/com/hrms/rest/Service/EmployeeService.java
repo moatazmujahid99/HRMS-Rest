@@ -72,8 +72,9 @@ public class EmployeeService {
 
     public static List<InvalidFieldMessageDTO> getInvalidFieldList(
             Set<ConstraintViolation<CreatedEmployeeDTO>> violations) {
-        List<InvalidFieldMessageDTO> invalidFieldList = new ArrayList<>();
 
+        List<InvalidFieldMessageDTO> invalidFieldList = new ArrayList<>();
+        
         for (ConstraintViolation<CreatedEmployeeDTO> violation : violations) {
             InvalidFieldMessageDTO invalidFieldMessageDTO = InvalidFieldMessageDTO.builder()
                     .field(violation.getPropertyPath().toString())

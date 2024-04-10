@@ -1,5 +1,6 @@
 package com.hrms.rest.Service.mapper;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class EmployeeMapper {
         employee.setEmail(createdEmployeeDTO.getEmail());
         employee.setPhoneNumber(createdEmployeeDTO.getPhoneNumber());
         employee.setJobTitle(createdEmployeeDTO.getJobTitle());
-        employee.setHireDate(createdEmployeeDTO.getHireDate());
+        employee.setHireDate(Date.valueOf(createdEmployeeDTO.getHireDate()));
         return employee;
     }
 

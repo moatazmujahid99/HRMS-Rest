@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 public class AbsenceDTO {
     private int leaveId;
+    private String employeeName;
     private LeaveType leaveType;
     private LeaveStatus leaveStatus;
     private Timestamp leaveStartDate;

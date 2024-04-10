@@ -1,7 +1,5 @@
 package com.hrms.rest.presentation.dto;
 
-import java.sql.Date;
-import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -14,10 +12,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreatedEmployeeDTO{
+
     private int employeeId;
+
     @Size(min = 3,max = 50,message = "Your first name must be between 3 and 50")
     private String firstName;
-    
+
     @Size(min = 3,max = 50,message = "Your last name must be between 3 and 50")
     private String lastName;
 
@@ -31,6 +31,6 @@ public class CreatedEmployeeDTO{
     private String jobTitle;
 
     @NotNull(message = "Hire date is required")
-    @JsonbDateFormat(value = "yyyy-MM-dd")
-    private Date hireDate;
+    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Hire date must be in the format 'yyyy-MM-dd'")
+    private String hireDate;
 }

@@ -53,7 +53,6 @@ public class EmployeeController {
                     .entity(invalidFieldList)
                     .build();
         }
-
         int createdEmployeeId = EmployeeService.createEmployee(createdEmployeeDTO);
         createdEmployeeDTO.setEmployeeId(createdEmployeeId);
         return Response.status(Response.Status.CREATED).entity(createdEmployeeDTO).build();
